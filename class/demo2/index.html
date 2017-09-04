@@ -13,7 +13,7 @@
   <div id="recv"></div>
 
   <script>
-    var websocket = new WebSocket('ws://localhost:8001');
+    var websocket = new WebSocket('ws://localhost:3001');
     var recv = document.getElementById('recv');
     var sendBtn = document.getElementById('sendBtn');    
 
@@ -27,7 +27,7 @@
     }
 
     websocket.onmessage = e => {
-      console.log(e.data);
+      console.error(e.data);
       recv.innerHTML = e.data;
     }
 
