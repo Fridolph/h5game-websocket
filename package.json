@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Fridolph/h5game-websocket-base#readme",
   "dependencies": {
-    "nodejs-websocket": "^1.7.1"
+    "nodejs-websocket": "^1.7.1",
+    "socket.io": "^2.0.3"
   }
 }

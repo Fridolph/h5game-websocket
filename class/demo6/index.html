@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat Room</title>
+</head>
+
+<body>
+  <h1>Chat Room</h1>
+  <input type="text" id="sendTxt">
+  <button id="sendBtn">发送</button>
+  <!-- <div id="recv"></div> -->
+  <script src="../../socket.io.js"></script>
+  <script>
+    // var websocket = new WebSocket('ws://localhost:3333');
+    var socket = io('ws://localhost:3000')
+    var btn = document.getElementById('sendBtn');
+    var input = document.getElementById('sendTxt');
+
+    const showMessage = (str, type) => {
+      let div = document.createElement('div');
+      div.innerHTML = str;
+
+      if (type === 'enter') {
+        div.style.color = 'blue';
+      } else if (type === 'leave') {
+        div.style.color = 'red'
+      }
+      document.body.appendChild(div);
+    }
+
+    btn.onclick = function () {
+      var txt = input.value;
+
+      if (txt) {
+        socket.emit('message', txt)
+      }
+    }
+
+    socket.on('enter', data => {
+      showMessage(data, 'enter')
+    })
+
+    socket.on('message', data => {
+      showMessage(data, 'message')
+    })
+
+    socket.on('leave', data => {
+      showMessage(data, 'leave')
+    })
+  </script>
+</body>
+
+</html>
