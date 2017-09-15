@@ -1,4 +1,10 @@
-# Websocket
+**注：本例为慕课网 channingbreeze老师的课程 基于websocket的火拼俄罗斯 的示例~ 仅供学习交流，请务他用**
+
+[基础篇](http://www.imooc.com/learn/861)
+[单机版](http://www.imooc.com/learn/882)
+[升级版](http://www.imooc.com/learn/885)
+
+## Websocket
 
 http://www.websocket.org
 
@@ -21,3 +27,9 @@ WebSocket 允许浏览器和服务器简历持久连接
 HTML5的websocket API
 服务端使用nodejs-websocket实现websocket server
 使用socket.io实现websocket
+
+---
+
+class 里的每个demo对应着课程基础篇中的案例
+
+game 为单击版的代码示例

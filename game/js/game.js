@@ -154,6 +154,30 @@ var Game = function () {
     }
   }
 
+  // 方块移动到底部后，给它固定
+  var fixed = function() {
+    for (var i = 0; i < cur.data.length; i++) {
+      for (var j = 0; j < cur.data[0].length; j++) {
+        if (check(cur.origin, i, j)) {
+          if (gameData[cur.origin.x + i][cur.origin.y + j] === 2) {
+            gameData[cur.origin.x + i][cur.origin.y + j] = 1;
+          }
+        }
+      }
+    }
+
+    refreshDiv(gameData, gameDivs);
+  }
+
+  // 使用下一个方块
+  var performNext = function(type, dir) {
+    cur = next;
+    setData();
+    next = SquareFactory.prototype.make(type, dir);
+    refreshDiv(gameData, gameDivs);
+    refreshDiv(next.data, nextDivs);
+  }
+
   // 初始化
   var init = function (doms) {
     gameDiv = doms.gameDiv;
@@ -163,7 +187,7 @@ var Game = function () {
     initDiv(gameDiv, gameData, gameDivs);
     initDiv(nextDiv, next.data, nextDivs);
 
-    cur.origin.x = 10;
+    cur.origin.x = 5;
     cur.origin.y = 5;
 
     setData();
@@ -181,4 +205,6 @@ var Game = function () {
   this.fall = function() {
     while (down()) {}
   }
+  this.fixed = fixed;
+  this.performNext = performNext;
 }

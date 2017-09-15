@@ -277,7 +277,7 @@ SquareFactory.prototype.make = function (index, dir) {
   }
 
   s.origin.x = 0;
-  s.origin.y = 3;
+  s.origin.y = 4;
   s.rotate(dir);
   return s;
 }
